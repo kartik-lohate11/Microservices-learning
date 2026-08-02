@@ -45,6 +45,17 @@ services:
     networks:
       - kartik-services-network
 
+  gateway-server:
+    container_name: gateway
+    image: kartik/gateway:v1
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8091/eureka
+    ports:
+      - "8011:8011"
+    networks:
+      - kartik-services-network
+    depends_on:
+      - eureka-server
 
 networks:
   kartik-services-network:

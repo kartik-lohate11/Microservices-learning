@@ -44,6 +44,13 @@ call mvnw.cmd clean package -DskipTests jib:dockerBuild
 cd ..
 
 echo ===============================
+echo Building API Gateway Service...
+echo ===============================
+cd gatewayserver
+call mvnw.cmd clean package -DskipTests jib:dockerBuild
+cd ..
+
+echo ===============================
 echo Starting Containers...
 echo ===============================
 docker compose -f docker-compose\docker-compose.yml up -d
