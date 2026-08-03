@@ -14,19 +14,27 @@ public class RouteConfig {
                 .route(
                         p -> p
                                 .path("/kartik/audit/**")
-                                .filters(f -> f.rewritePath("/kartik/audit/(?<segment>.*)", "/${segment}"))
+                                .filters(f -> f.rewritePath("/kartik/audit/(?<segment>.*)", "/${segment}")
+                                        .circuitBreaker(config -> config.setName("auditCircuitBreaker")
+                                                .setFallbackUri("forward:/contact")))
                                 .uri("lb://AUDIT")
                 )
                 .route(
                         p -> p
                                 .path("/kartik/order/**")
-                                .filters(f -> f.rewritePath("/kartik/order/(?<segment>.*)", "/${segment}"))
+                                .filters(f -> f.rewritePath("/kartik/order/(?<segment>.*)", "/${segment}")
+                                        .circuitBreaker(config -> config.setName("orderCircuitBreaker")
+                                                .setFallbackUri("forward:/contact"))
+                                        )
                                 .uri("lb://ORDER")
                 )
                 .route(
                         p -> p
                                 .path("/kartik/payment/**")
-                                .filters(f -> f.rewritePath("/kartik/payment/(?<segment>.*)", "/${segment}"))
+                                .filters(f -> f.rewritePath("/kartik/payment/(?<segment>.*)", "/${segment}")
+                                        .circuitBreaker(config -> config.setName("paymentCircuitBreaker")
+                                                .setFallbackUri("forward:/contact")
+                                        ))
                                 .uri("lb://PAYMENT")
                 ).build();
     }

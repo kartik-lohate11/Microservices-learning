@@ -17,6 +17,7 @@ public class MainController {
 
     @GetMapping
     public ResponseEntity<?> getAudit() {
+
         return ResponseEntity.ok(auditService.getAudit());
     }
 
