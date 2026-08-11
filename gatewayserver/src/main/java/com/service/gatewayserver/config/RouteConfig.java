@@ -4,6 +4,9 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+
+import java.time.Duration;
 
 @Configuration
 public class RouteConfig {
@@ -25,7 +28,12 @@ public class RouteConfig {
                                 .filters(f -> f.rewritePath("/kartik/order/(?<segment>.*)", "/${segment}")
                                         .circuitBreaker(config -> config.setName("orderCircuitBreaker")
                                                 .setFallbackUri("forward:/contact"))
-                                        )
+                                        .retry(retryConfig -> retryConfig
+                                                .setRetries(3)
+                                                .setMethods(HttpMethod.GET)
+                                                .setBackoff(Duration.ofMillis(100), Duration.ofMillis(1000), 2, true))
+
+                                )
                                 .uri("lb://ORDER")
                 )
                 .route(
