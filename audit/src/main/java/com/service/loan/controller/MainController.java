@@ -3,6 +3,7 @@ package com.service.loan.controller;
 import com.service.loan.dto.AuditData;
 import com.service.loan.service.AuditService;
 import com.service.loan.service.client.PaymentFeignClient;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,12 @@ public class MainController {
     public ResponseEntity<?> saveAudit(@RequestBody AuditData auditData) {
         auditService.saveAudit(auditData);
         return ResponseEntity.ok("Data saved");
+    }
+
+    @RateLimiter(name = "verifyPayment")
+    @GetMapping("/verify")
+    public ResponseEntity<?> verifyPayment(){
+        return ResponseEntity.ok("I am working fine");
     }
 
     @GetMapping("/pay")
