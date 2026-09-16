@@ -18,31 +18,4 @@ public class PaymentService {
             return amount;
     }
 
-    public Payment createPayment(PaymentRequest request) {
-
-        Payment payment = Payment.builder()
-                .orderId(request.getOrderId())
-                .userId(request.getUserId())
-                .amount(request.getAmount())
-                .paymentMethod(request.getPaymentMethod())
-                .status("PENDING")
-                .build();
-
-        return paymentRepository.save(payment);
-    }
-
-    public Payment getPayment(Long paymentId) {
-        return paymentRepository.findById(paymentId)
-                .orElseThrow(() -> new RuntimeException("Payment not found"));
-    }
-
-    public Payment updateStatus(Long paymentId, String status) {
-
-        Payment payment = getPayment(paymentId);
-
-        payment.setStatus(status);
-
-        return paymentRepository.save(payment);
-    }
-
 }

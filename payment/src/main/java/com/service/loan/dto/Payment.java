@@ -2,6 +2,9 @@ package com.service.loan.dto;
 
 import lombok.Data;
 
+import java.util.Collections;
+import java.util.HashMap;
+
 @Data
 public class Payment {
     private Long paymentId;
@@ -11,4 +14,5 @@ public class Payment {
     private Double amount;
     private String paymentMethod;
     private String status;
+
 }
