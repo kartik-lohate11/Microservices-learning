@@ -18,6 +18,7 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
         <module name="loan (1)" />
+        <module name="loan" />
       </profile>
       <profile name="Annotation profile for Payment" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -28,7 +29,6 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
         <module name="loan (2)" />
-        <module name="loan" />
       </profile>
     </annotationProcessing>
   </component>
