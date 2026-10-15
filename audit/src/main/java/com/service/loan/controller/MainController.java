@@ -28,6 +28,11 @@ public class MainController {
         return ResponseEntity.ok("Data saved");
     }
 
+    @GetMapping("/health")
+    public ResponseEntity<?> health(){
+        return ResponseEntity.ok("Services is healthy");
+    }
+
     @RateLimiter(name = "verifyPayment")
     @GetMapping("/verify")
     public ResponseEntity<?> verifyPayment(){

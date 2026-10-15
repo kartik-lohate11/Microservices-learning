@@ -13,6 +13,11 @@ public class MainController {
 
     private final PaymentService paymentService;
 
+    @GetMapping("/health")
+    public ResponseEntity<?> health(){
+        return ResponseEntity.ok("Services is healthy");
+    }
+
     @GetMapping
     public ResponseEntity<?> getAudit() {
         return ResponseEntity.ok(paymentService.getAmount());

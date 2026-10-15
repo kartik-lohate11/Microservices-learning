@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FallbackController {
 
+    @GetMapping("/health")
+    public ResponseEntity<?> health(){
+        return ResponseEntity.ok("Services is healthy");
+    }
+
     @GetMapping("/contact")
     public ResponseEntity<?> contact(){
         return ResponseEntity
