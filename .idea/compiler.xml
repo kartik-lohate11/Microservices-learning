@@ -8,9 +8,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="gatewayserver" />
+        <module name="message" />
         <module name="eurekaDemo" />
       </profile>
-      <profile name="Annotation profile for Audit Service" enabled="true">
+      <profile name="Annotation profile for Order" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -18,17 +19,8 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
         <module name="loan (1)" />
-        <module name="loan" />
-      </profile>
-      <profile name="Annotation profile for Payment" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
-        </processorPath>
         <module name="loan (2)" />
+        <module name="loan" />
       </profile>
     </annotationProcessing>
   </component>
@@ -39,6 +31,7 @@
       <module name="loan" options="-parameters" />
       <module name="loan (1)" options="-parameters" />
       <module name="loan (2)" options="-parameters" />
+      <module name="message" options="-parameters" />
     </option>
   </component>
 </project>
